@@ -1,5 +1,6 @@
 package com.lullaby.cardstudy.domain;
 
+import com.lullaby.cardstudy.common.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,22 +14,22 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @Entity
-public class Category {
+public class CardSet extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
+    @Column(name = "card_set_id")
     private Long id;
     private String name;
     private String description;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-    public Category(String name, String description) {
+    private LocalDateTime lastReviewedAt;
+    private Integer reviewCount;
+    private Integer totalCardCount;
+    public CardSet(String name, String description) {
         this.name = name;
         this.description = description;
+        this.lastReviewedAt = LocalDateTime.now();
+        this.reviewCount = 0;
+        this.totalCardCount = 0;
     }
 
     public void setName(String name) {
@@ -37,6 +38,19 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void review() {
+        this.lastReviewedAt = LocalDateTime.now();
+        this.reviewCount++;
+    }
+
+    public void addCard() {
+        this.totalCardCount++;
+    }
+
+    public void deleteCard() {
+        this.totalCardCount--;
     }
 
 }

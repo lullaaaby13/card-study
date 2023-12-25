@@ -9,10 +9,9 @@ public record CardResponse(
         Long id,
         String front,
         String back,
-
         MemorizationLevel memorizationLevel,
         LocalDateTime nextReviewDate,
-        CategoryResponse category,
+        // CardSetResponse cardSet,
         String createdAt,
         String updatedAt
 ) {
@@ -24,7 +23,7 @@ public record CardResponse(
                 card.getBack(),
                 card.getMemorizationLevel(),
                 card.getNextReviewAt(),
-                new CategoryResponse(card.getCategory()),
+                // new CardSetResponse(card.getCardSet()),
                 card.getCreatedAt().toString(),
                 card.getUpdatedAt().toString()
         );

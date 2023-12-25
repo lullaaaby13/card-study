@@ -1,7 +1,7 @@
 package com.lullaby.cardstudy.appliation;
 
 public record AddCardCommand(
-        Long categoryId,
+        Long cardSetId,
         String front,
         String back
 ) {

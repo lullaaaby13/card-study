@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(originPatterns = "*")
 @RequestMapping("/api/cards")
 @RequiredArgsConstructor
 @RestController
@@ -17,8 +18,8 @@ public class CardController {
     private final CardService cardService;
 
     @GetMapping
-    public List<CardResponse> getCards(@RequestParam(name = "categoryId") Long categoryId) {
-        return cardService.getCards(categoryId);
+    public List<CardResponse> getCards(@RequestParam(name = "cardSetId") Long cardSetId) {
+        return cardService.getCards(cardSetId);
     }
 
     @PostMapping
@@ -26,13 +27,13 @@ public class CardController {
         return cardService.addCard(command);
     }
 
-    @DeleteMapping
-    public void deleteCard(@RequestParam Long id) {
+    @DeleteMapping("{id}")
+    public void deleteCard(@PathVariable(name = "id") Long id) {
         cardService.deleteCard(id);
     }
 
     @PutMapping("{id}")
-    public void updateCard(@PathVariable Long id,
+    public void updateCard(@PathVariable(name = "id") Long id,
                            @RequestBody UpdateCardCommand command) {
         cardService.updateCard(id, command);
     }

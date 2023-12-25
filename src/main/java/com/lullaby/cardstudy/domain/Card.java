@@ -1,5 +1,6 @@
 package com.lullaby.cardstudy.domain;
 
+import com.lullaby.cardstudy.common.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @Entity
-public class Card {
+public class Card extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,22 +26,15 @@ public class Card {
     private LocalDateTime nextReviewAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "card_set_id")
+    private CardSet cardSet;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-    public Card(Category category, String front, String back) {
-        this.category = category;
+    public Card(CardSet cardSet, String front, String back) {
+        this.cardSet = cardSet;
         this.front = front;
         this.back = back;
         this.memorizationLevel = MemorizationLevel.Difficult;
         this.nextReviewAt = LocalDateTime.now();
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
     }
 
     public void updateFront(String front) {

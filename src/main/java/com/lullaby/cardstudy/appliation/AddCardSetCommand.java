@@ -1,6 +1,6 @@
 package com.lullaby.cardstudy.appliation;
 
-public record AddCategoryCommand(
+public record AddCardSetCommand(
         String name,
         String description
 ) {

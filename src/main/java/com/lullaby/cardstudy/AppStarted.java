@@ -5,7 +5,7 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class AppStarted implements ApplicationListener<ApplicationStartedEvent> {
 
     @Value("${test}")

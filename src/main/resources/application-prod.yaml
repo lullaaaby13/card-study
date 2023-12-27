@@ -4,7 +4,7 @@ spring:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
-    url: jdbc:mariadb://${DATABASE_URL}/${DATABASE_NAME}
+
   jpa:
     hibernate:
       ddl-auto: create

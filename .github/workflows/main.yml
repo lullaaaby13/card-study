@@ -56,7 +56,7 @@ jobs:
           port: 22
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
-            DATABASE_URL=${{ secrets.SERVER_PASSWORD }} \
-            DATABASE_USERNAME=${{ secrets.SERVER_PASSWORD }} \
-            DATABASE_PASSWORD=${{ secrets.SERVER_PASSWORD }} \
+            DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+            DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
             nohup java -jar -Dspring.profiles.active=prod ./build/libs/card-study-api.jar > ./card-study-api.log 2>&1 &

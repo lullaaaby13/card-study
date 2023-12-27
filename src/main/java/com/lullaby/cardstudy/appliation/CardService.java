@@ -7,8 +7,10 @@ import com.lullaby.cardstudy.domain.CardSet;
 import com.lullaby.cardstudy.dto.CardResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ public class CardService {
         CardSet cardSet = cardSetService.findCardSetEntity(cardSetId)
                 .orElseThrow(() -> new NotFoundException("카드 셋을 찾을 수 없습니다."));
 
-        return cardRepository.findByCardSet(cardSet)
+        return cardRepository.findByCardSetOrderByIdDesc(cardSet)
                 .stream().map(CardResponse::new)
                 .toList();
     }
@@ -50,24 +52,34 @@ public class CardService {
                 .orElseThrow(() -> new NotFoundException("카드를 찾을 수 없습니다."));
     }
 
-    public void updateCard(Long id, UpdateCardCommand command) {
+    public CardResponse updateCard(Long id, UpdateCardCommand command) {
         Card card = cardRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("카드를 찾을 수 없습니다."));
-        card.updateFront(command.front());
-        card.updateBack(command.back());
-        cardRepository.save(card);
+        if (command.front() != null) {
+            card.setFront(command.front());
+        }
+        if (command.back() != null) {
+            card.setBack(command.back());
+        }
+        card.clearMemorizationLevel();
+        return new CardResponse(card);
     }
 
-    public void increaseMemorizationLevel(Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.increaseMemorizationLevel();
-        cardRepository.save(card);
-    }
+    public List<CardResponse> addCardByFile(Long cardSetId, String textFileContent) {
+        List<CardResponse> cardResponses = new ArrayList<>();
 
-    public void decreaseMemorizationLevel(Long id) {
-        Card card = cardRepository.findById(id).orElseThrow();
-        card.decreaseMemorizationLevel();
-        cardRepository.save(card);
+        for (String text : textFileContent.split("@@")) {
+
+            if (text.startsWith("\n")) {
+                text = text.substring(1);
+            }
+            String front = StringUtils.substringBefore(text, "\n").trim();
+            String back = StringUtils.substringAfter(text, "\n").trim();
+            CardResponse cardResponse = addCard(new AddCardCommand(cardSetId, front, back));
+            cardResponses.add(cardResponse);
+        }
+
+        return cardResponses;
     }
 
 }

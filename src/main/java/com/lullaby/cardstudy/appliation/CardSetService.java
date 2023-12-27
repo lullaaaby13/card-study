@@ -22,20 +22,20 @@ public class CardSetService {
                 .stream().map(CardSetResponse::new)
                 .toList();
     }
-    public void addCardSet(AddCardSetCommand command) {
+    public CardSetResponse addCardSet(AddCardSetCommand command) {
         CardSet cardSet = new CardSet(command.name(), command.description());
-        cardSetRepository.save(cardSet);
+        return new CardSetResponse(cardSetRepository.save(cardSet));
     }
 
     public void deleteCardSet(Long id) {
         cardSetRepository.deleteById(id);
     }
 
-    public void updateCardSet(Long id, UpdateCardSetCommand command) {
+    public CardSetResponse updateCardSet(Long id, UpdateCardSetCommand command) {
         CardSet cardSet = cardSetRepository.findById(id).orElseThrow();
         cardSet.setName(command.name());
         cardSet.setDescription(command.description());
-        cardSetRepository.save(cardSet);
+        return new CardSetResponse(cardSetRepository.save(cardSet));
     }
 
     public Optional<CardSet> findCardSetEntity(Long id) {

@@ -19,7 +19,7 @@ class CardTest {
     @Test
     void updateFront() {
         Card card = new Card(null, "Apple", "사과");
-        card.updateFront("Banana");
+        card.setFront("Banana");
         assertEquals("Banana", card.getFront());
     }
 
@@ -27,7 +27,7 @@ class CardTest {
     @Test
     void updateBack() {
         Card card = new Card(null, "Apple", "사과");
-        card.updateBack("바나나");
+        card.setBack("바나나");
         assertEquals("바나나", card.getBack());
     }
 

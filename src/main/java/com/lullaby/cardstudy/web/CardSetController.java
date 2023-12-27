@@ -23,8 +23,8 @@ public class CardSetController {
     }
 
     @PostMapping
-    public void addCardSet(@RequestBody AddCardSetCommand command) {
-        cardSetService.addCardSet(command);
+    public CardSetResponse addCardSet(@RequestBody AddCardSetCommand command) {
+        return cardSetService.addCardSet(command);
     }
 
     @DeleteMapping("/{id}")
@@ -33,8 +33,8 @@ public class CardSetController {
     }
 
     @PutMapping("/{id}")
-    public void updateCardSet(@PathVariable(name = "id") Long id, @RequestBody UpdateCardSetCommand command) {
-        cardSetService.updateCardSet(id, command);
+    public CardSetResponse updateCardSet(@PathVariable(name = "id") Long id, @RequestBody UpdateCardSetCommand command) {
+        return cardSetService.updateCardSet(id, command);
     }
 
 }

@@ -6,7 +6,9 @@ import com.lullaby.cardstudy.appliation.UpdateCardCommand;
 import com.lullaby.cardstudy.dto.CardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(originPatterns = "*")
@@ -32,11 +34,20 @@ public class CardController {
         cardService.deleteCard(id);
     }
 
-    @PutMapping("{id}")
-    public void updateCard(@PathVariable(name = "id") Long id,
-                           @RequestBody UpdateCardCommand command) {
-        cardService.updateCard(id, command);
+    @PatchMapping("{id}")
+    public CardResponse updateCard(@PathVariable(name = "id") Long id,
+                                   @RequestBody UpdateCardCommand command) {
+        return cardService.updateCard(id, command);
+    }
+
+    @PostMapping("/file")
+    public List<CardResponse> addCardByFile(
+            @RequestParam Long cardSetId,
+            @RequestPart("file") MultipartFile multipartFile
+    ) throws IOException {
+        return cardService.addCardByFile(cardSetId, new String(multipartFile.getBytes()));
     }
 
 }
+
 

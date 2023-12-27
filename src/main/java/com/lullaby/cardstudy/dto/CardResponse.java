@@ -1,5 +1,6 @@
 package com.lullaby.cardstudy.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lullaby.cardstudy.domain.Card;
 import com.lullaby.cardstudy.domain.MemorizationLevel;
 
@@ -10,10 +11,13 @@ public record CardResponse(
         String front,
         String back,
         MemorizationLevel memorizationLevel,
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime nextReviewDate,
         // CardSetResponse cardSet,
-        String createdAt,
-        String updatedAt
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        LocalDateTime createdAt,
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        LocalDateTime updatedAt
 ) {
 
     public CardResponse(Card card) {
@@ -24,8 +28,8 @@ public record CardResponse(
                 card.getMemorizationLevel(),
                 card.getNextReviewAt(),
                 // new CardSetResponse(card.getCardSet()),
-                card.getCreatedAt().toString(),
-                card.getUpdatedAt().toString()
+                card.getCreatedAt(),
+                card.getUpdatedAt()
         );
     }
 }

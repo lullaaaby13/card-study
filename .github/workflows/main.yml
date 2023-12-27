@@ -59,4 +59,4 @@ jobs:
             DATABASE_URL=${{ secrets.DATABASE_URL }} \
             DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
             DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
-            nohup java -jar -Dspring.profiles.active=prod ./build/libs/card-study-api.jar > ./card-study-api.log 2>&1 &
+            nohup java -jar -Dspring.profiles.active=prod -Dserver.port=${{ secrets.APP_PORT }} ./build/libs/card-study-api.jar > ./card-study-api.log 2>&1 &

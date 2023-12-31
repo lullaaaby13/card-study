@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(originPatterns = "*")
 @RequestMapping("/api/card-sets")
 @RequiredArgsConstructor
 @RestController

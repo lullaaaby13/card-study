@@ -6,7 +6,6 @@ import com.lullaby.cardstudy.appliation.StudyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(originPatterns = "*")
 @RequestMapping("/api/study")
 @RequiredArgsConstructor
 @RestController

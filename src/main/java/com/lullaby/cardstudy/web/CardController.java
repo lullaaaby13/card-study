@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin(originPatterns = "*")
 @RequestMapping("/api/cards")
 @RequiredArgsConstructor
 @RestController

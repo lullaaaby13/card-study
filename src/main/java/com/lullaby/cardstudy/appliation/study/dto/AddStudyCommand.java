@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.appliation;
+package com.lullaby.cardstudy.appliation.study.dto;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,7 @@ public record AddStudyCommand(
 
 ) {
 
-    enum StudyResult {
+    public enum StudyResult {
         CORRECT,
         WRONG
     }

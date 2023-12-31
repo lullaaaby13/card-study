@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.dto;
+package com.lullaby.cardstudy.appliation.cardset.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lullaby.cardstudy.domain.CardSet;

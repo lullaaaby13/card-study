@@ -1,9 +1,9 @@
 package com.lullaby.cardstudy.web;
 
-import com.lullaby.cardstudy.appliation.AddCardSetCommand;
-import com.lullaby.cardstudy.appliation.CardSetService;
-import com.lullaby.cardstudy.appliation.UpdateCardSetCommand;
-import com.lullaby.cardstudy.dto.CardSetResponse;
+import com.lullaby.cardstudy.appliation.cardset.dto.AddCardSetCommand;
+import com.lullaby.cardstudy.appliation.cardset.CardSetService;
+import com.lullaby.cardstudy.appliation.cardset.dto.UpdateCardSetCommand;
+import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

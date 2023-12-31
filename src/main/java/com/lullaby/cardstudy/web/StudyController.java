@@ -1,8 +1,7 @@
 package com.lullaby.cardstudy.web;
 
-import com.lullaby.cardstudy.appliation.AddStudyCommand;
-import com.lullaby.cardstudy.appliation.CardService;
-import com.lullaby.cardstudy.appliation.StudyService;
+import com.lullaby.cardstudy.appliation.study.dto.AddStudyCommand;
+import com.lullaby.cardstudy.appliation.study.StudyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

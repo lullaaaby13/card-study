@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.security;
+package com.lullaby.cardstudy.appliation.authenticate;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,8 @@ import java.util.Date;
 @Component
 public class TokenProvider {
 
-    private final Long tokenValidityInMilliseconds = 1000 * 60 * 60 * 24 * 7L;
+    private final Long ACCESS_TOKEN_EXPIRES_IN_MILLIS = 1000 * 60 * 60L;
+    private final Long REFRESH_TOKEN_EXPIRES_IN_MILLIS = 1000 * 60 * 60 * 24 * 14L;
     private final Key jwtSecretKey;
 
     public TokenProvider() {
@@ -21,15 +22,25 @@ public class TokenProvider {
         this.jwtSecretKey = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String accessToken() {
-
-        String username = "admin";
+    public String accessToken(Long userId) {
 
         long now = new Date().getTime();
-        long expired = now + tokenValidityInMilliseconds;
+        long expired = now + ACCESS_TOKEN_EXPIRES_IN_MILLIS;
 
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(userId.toString())
+                .setIssuedAt(new Date(now))
+                .setExpiration(new Date(expired))
+                .signWith(jwtSecretKey)
+                .compact();
+    }
+
+    public String refreshToken(Long userId) {
+        long now = new Date().getTime();
+        long expired = now + REFRESH_TOKEN_EXPIRES_IN_MILLIS;
+
+        return Jwts.builder()
+                .setSubject(userId.toString())
                 .setIssuedAt(new Date(now))
                 .setExpiration(new Date(expired))
                 .signWith(jwtSecretKey)

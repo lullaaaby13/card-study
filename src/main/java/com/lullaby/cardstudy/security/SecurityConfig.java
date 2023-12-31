@@ -1,5 +1,6 @@
 package com.lullaby.cardstudy.security;
 
+import com.lullaby.cardstudy.appliation.authenticate.AuthenticateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
                             .requestMatchers(new AntPathRequestMatcher("/api/auth/**")).permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/api/member", "POST")).permitAll()
                             .anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtFilter(authenticateService), UsernamePasswordAuthenticationFilter.class)

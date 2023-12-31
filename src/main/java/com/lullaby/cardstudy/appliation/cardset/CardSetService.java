@@ -1,8 +1,10 @@
-package com.lullaby.cardstudy.appliation;
+package com.lullaby.cardstudy.appliation.cardset;
 
+import com.lullaby.cardstudy.appliation.cardset.dto.AddCardSetCommand;
+import com.lullaby.cardstudy.appliation.cardset.dto.UpdateCardSetCommand;
 import com.lullaby.cardstudy.domain.CardSet;
 import com.lullaby.cardstudy.domain.CardSetRepository;
-import com.lullaby.cardstudy.dto.CardSetResponse;
+import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -4,12 +4,15 @@ import com.lullaby.cardstudy.appliation.card.CardService;
 import com.lullaby.cardstudy.appliation.cardset.dto.AddCardSetCommand;
 import com.lullaby.cardstudy.appliation.cardset.CardSetService;
 import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
+import com.lullaby.cardstudy.domain.Member;
+import com.lullaby.cardstudy.fixture.MemberFixture;
+import com.lullaby.cardstudy.utils.IntegrationTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class CardServiceTest {
+class CardServiceTest extends IntegrationTest {
 
     @Autowired
     CardService cardService;
@@ -17,10 +20,17 @@ class CardServiceTest {
     @Autowired
     CardSetService cardSetService;
 
+    Member member = MemberFixture.MEMBER;
+
+    @BeforeEach
+    void setUp() {
+        memberRepository.save(member);
+    }
+
     @Test
     void name() {
 
-        CardSetResponse cardSet = cardSetService.addCardSet(new AddCardSetCommand("test", null));
+        CardSetResponse cardSet = cardSetService.addCardSet(member.getId(), new AddCardSetCommand("test", null));
 
         String textContent = """
                 Apple
@@ -32,6 +42,6 @@ class CardServiceTest {
                 Citron
                 유자
                 """;
-        cardService.addCardByFile(cardSet.id(), textContent);
+        cardService.addCardByFile(member.getId(), cardSet.id(), textContent);
     }
 }

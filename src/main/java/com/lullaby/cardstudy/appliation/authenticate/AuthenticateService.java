@@ -4,6 +4,7 @@ import com.lullaby.cardstudy.appliation.authenticate.dto.SignInCommand;
 import com.lullaby.cardstudy.domain.Member;
 import com.lullaby.cardstudy.domain.MemberRepository;
 import com.lullaby.cardstudy.appliation.authenticate.dto.SignInResponse;
+import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
@@ -42,7 +43,14 @@ public class AuthenticateService {
             throw new IllegalArgumentException();
         }
         Claims claims = tokenProvider.parseToken(bearerToken);
-        return new UsernamePasswordAuthenticationToken("admin", null, new ArrayList<>());
+        Long userId = Long.valueOf(claims.getSubject());
+
+        if (!memberRepository.existsById(userId)) {
+            throw new HttpClientErrorException(HttpStatusCode.valueOf(401), "존재하지 않는 계정이거나 비밀번호가 올바르지 않습니다.");
+        }
+
+        AuthenticatedUser authenticatedUser = new AuthenticatedUser(userId);
+        return new UsernamePasswordAuthenticationToken(authenticatedUser, null, new ArrayList<>());
     }
 
 }

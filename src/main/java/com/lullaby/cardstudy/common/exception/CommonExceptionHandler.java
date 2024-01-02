@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 @Slf4j
 @RestControllerAdvice
@@ -21,6 +22,13 @@ public class CommonExceptionHandler {
         log.error(e.getMessage(), e);
         return ResponseEntity.status(404)
                 .body(new HttpErrorResponse(404, e.getMessage()));
+    }
+
+    @ExceptionHandler(HttpClientErrorException.class)
+    public ResponseEntity<HttpErrorResponse> handleHttpClientErrorException(HttpClientErrorException e) {
+        log.error(e.getMessage(), e);
+        return ResponseEntity.status(e.getStatusCode())
+                .body(new HttpErrorResponse(e.getStatusCode().value(), e.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)

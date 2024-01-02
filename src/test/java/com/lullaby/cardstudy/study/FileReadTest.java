@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy;
+package com.lullaby.cardstudy.study;
 
 
 

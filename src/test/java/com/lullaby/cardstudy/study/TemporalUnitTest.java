@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy;
+package com.lullaby.cardstudy.study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

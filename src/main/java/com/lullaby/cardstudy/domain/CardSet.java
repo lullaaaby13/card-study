@@ -26,16 +26,20 @@ public class CardSet extends BaseEntity {
     private LocalDateTime lastReviewedAt;
     private Integer reviewCount;
     private Integer totalCardCount;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner_id")
+    private Member owner;
 
     @OneToMany(mappedBy = "cardSet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Card> cards = new ArrayList<>();
 
-    public CardSet(String name, String description) {
+    public CardSet(String name, String description, Member owner) {
         setName(name);
         setDescription(description);
         this.lastReviewedAt = LocalDateTime.now();
         this.reviewCount = 0;
         this.totalCardCount = 0;
+        this.owner = owner;
     }
 
     public void setName(String name) {
@@ -67,6 +71,10 @@ public class CardSet extends BaseEntity {
                 .filter(card -> card.getNextReviewAt().isBefore(LocalDateTime.now()))
                 .count();
         return (int) count;
+    }
+
+    public boolean isOwnedBy(Member member) {
+        return this.owner.equals(member);
     }
 
 }

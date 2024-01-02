@@ -1,10 +1,12 @@
 package com.lullaby.cardstudy.web;
 
-import com.lullaby.cardstudy.appliation.card.dto.AddCardCommand;
 import com.lullaby.cardstudy.appliation.card.CardService;
-import com.lullaby.cardstudy.appliation.card.dto.UpdateCardCommand;
+import com.lullaby.cardstudy.appliation.card.dto.AddCardCommand;
 import com.lullaby.cardstudy.appliation.card.dto.CardResponse;
+import com.lullaby.cardstudy.appliation.card.dto.UpdateCardCommand;
+import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,32 +21,38 @@ public class CardController {
     private final CardService cardService;
 
     @GetMapping
-    public List<CardResponse> getCards(@RequestParam(name = "cardSetId") Long cardSetId) {
-        return cardService.getCards(cardSetId);
+    public List<CardResponse> getCards(@AuthenticationPrincipal AuthenticatedUser authenticatedUser, @RequestParam(name = "cardSetId") Long cardSetId) {
+
+        return cardService.getCards(authenticatedUser.getUserId(), cardSetId);
     }
 
     @PostMapping
-    public CardResponse addCard(@RequestBody AddCardCommand command) {
-        return cardService.addCard(command);
+    public CardResponse addCard(@AuthenticationPrincipal AuthenticatedUser authenticatedUser, @RequestBody AddCardCommand command) {
+        return cardService.addCard(authenticatedUser.getUserId(), command);
     }
 
     @DeleteMapping("{id}")
-    public void deleteCard(@PathVariable(name = "id") Long id) {
-        cardService.deleteCard(id);
+    public void deleteCard(
+            @AuthenticationPrincipal AuthenticatedUser authenticatedUser,
+            @PathVariable(name = "id") Long id) {
+        cardService.deleteCard(authenticatedUser.getUserId(), id);
     }
 
     @PatchMapping("{id}")
-    public CardResponse updateCard(@PathVariable(name = "id") Long id,
-                                   @RequestBody UpdateCardCommand command) {
-        return cardService.updateCard(id, command);
+    public CardResponse updateCard(
+            @AuthenticationPrincipal AuthenticatedUser authenticatedUser,
+            @PathVariable(name = "id") Long id,
+            @RequestBody UpdateCardCommand command) {
+        return cardService.updateCard(authenticatedUser.getUserId(), id, command);
     }
 
     @PostMapping("/file")
     public List<CardResponse> addCardByFile(
+            @AuthenticationPrincipal AuthenticatedUser authenticatedUser,
             @RequestParam Long cardSetId,
             @RequestPart("file") MultipartFile multipartFile
     ) throws IOException {
-        return cardService.addCardByFile(cardSetId, new String(multipartFile.getBytes()));
+        return cardService.addCardByFile(authenticatedUser.getUserId(), cardSetId, new String(multipartFile.getBytes()));
     }
 
 }

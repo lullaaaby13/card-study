@@ -1,5 +1,6 @@
 package com.lullaby.cardstudy.domain;
 
+import com.lullaby.cardstudy.fixture.MemberFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

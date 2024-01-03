@@ -1,0 +1,505 @@
+certificate
+n. 증명서, 증서
+@@
+ideal
+adj. 이상적인
+@@
+degree
+n. 학위, 정도
+@@
+application
+n. 신청서, 응용
+@@
+candidate
+n. 지원자, 후보자
+@@
+requirement
+n. 요건, 필요조건
+@@
+experience
+n. 경험, 체험
+v. 경험하다, 체험하다
+@@
+resume
+n. 이력서
+@@
+interview
+n. 면접
+v. 면접을 보다
+@@
+ethic
+n. 윤리, 도덕
+@@
+hire
+v. 고용하다
+n. 신입 사원; 대여(받음)
+@@
+employee
+n. 직원, 종업원
+@@
+immediately
+adv. 즉시, 바로
+@@
+invite
+v. 초대하다; 요청하다
+@@
+qualified
+adj. 자격이 있는, 적격의
+@@
+recommendation
+n. 추천서
+@@
+achievement
+n. 업적, 성과
+@@
+recruit
+v. 모집하다, 고용하다
+n. 신입 사원
+@@
+additional
+adj. 추가적인
+@@
+professional
+adj. 전문적인, 직업의
+n. 전문가
+@@
+reference
+n. 추천서, 참고(자료)
+@@
+seek
+v. 찾다, 구하다
+@@
+highly
+adv. 매우, 대단히
+@@
+skilled
+adj. 숙련된, 능숙한
+@@
+meet
+v. 만나다, 충족시키다
+@@
+identification
+n. 신분증명
+@@
+adjust
+v. 조절하다, 적응하다
+@@
+occupation
+n. 직업, 종사
+@@
+persionality
+n. 성격, 개성
+@@
+labor
+n. 노동, 노동력
+v. 일하다; 애쓰다
+@@
+opening
+n. 공석, 채용
+v. 처음의
+@@
+exceptional
+adj. 예외적인, 특별한
+@@
+probationary
+adj. 수습의
+@@
+permanent
+adj. 영구적인, 지속적인
+@@
+judge
+v. 판단하다, 심판하다
+n. 심사위원, 판사
+@@
+eligible
+adj. 자격이 있는, 적격의
+@@
+aptitude
+n. 재능, 소질
+@@
+extraordinary
+adj. 비범한, 이상한; 임시의
+@@
+managerial
+adj. 경영의, 관리의
+@@
+applicant
+n. 지원자, 신청자
+@@
+assistant
+n. 조수, 보조
+@@
+possible
+adj. 가능한, 있을 수 있는
+@@
+duty
+n. 의무, 책임
+@@
+shortage
+n. 부족, 결핍
+@@
+graduate
+n. 졸업생
+v. 졸업하다
+@@
+license
+n. 면허, 허가
+match
+v. 일치하다, 어울리다
+n. 경기, 시합
+@@
+secretary
+n. 비서
+@@
+selection
+n. 선발, 선택
+@@
+energetic
+adj. 활기찬, 기운찬
+@@
+positively
+adv. 긍정적으로, 단언하건대
+@@
+therefore
+adv. 그러므로, 따라서
+@@
+standard
+n. 기준, 표준
+adj. 일반적인
+@@
+unused
+adj. 사용되지 않은
+@@
+diligent
+adj. 근면한, 부지런한
+@@
+role
+n. 역할, 임무
+@@
+hopeful
+adj. 희망적인, 전망이 좋은
+@@
+manner
+n. 방법, 태도
+@@
+attractive
+adj. 매력적인, 매혹적인
+@@
+lead
+v. 이끌다, 안내하다
+n. 선두, 선배
+@@
+application form
+phr. 신청서
+@@
+inconvenience
+n. 불편, 불편함
+@@
+anticipation
+n. 기대, 예상
+@@
+explore
+v. 탐험하다, 탐색하다
+@@
+educated
+adj. 교육받은, 학식 있는
+@@
+suited
+adj. 적합한, 알맞은
+@@
+officially
+adv. 공식적으로
+@@
+clear
+adj. 분명한, 명확한
+@@
+attitude
+n. 태도, 자세
+@@
+enterprice
+n. 기업, 회사
+@@
+apply for
+phr. ~에 지원하다
+@@
+architecture
+n. 건축, 건축학
+@@
+background
+n. 배경, 경력
+@@
+cover letter
+phr. 자기소개서
+@@
+electrician
+n. 전기 기술자
+@@
+fill out a form
+phr. 양식을 작성하다
+@@
+job offer
+phr. 취업 제안
+@@
+job vacancy
+phr. 공석, 채용
+@@
+job fair
+phr. 취업 박람회
+@@
+diploma
+n. 졸업장, 학위증
+@@
+excessive
+adj. 과도한, 지나친
+@@
+intolerable
+adj. 참을 수 없는, 견딜 수 없는
+@@
+adventurous
+adj. 모험적인, 대담한
+@@
+dedication
+n. 헌신, 전념
+@@
+directly
+adv. 곧바로, 직접적으로
+@@
+finely
+adv. 미세하게, 섬세하게
+@@
+hospitality
+n. 환대, 대접
+@@
+manufacturing
+n. 제조업, 제조
+@@
+conventional
+adj. 관습적인, 전통적인
+@@
+precisely
+adv. 정확히, 정밀하게
+@@
+prompt
+adj. 신속한, 즉각적인
+@@
+routinely
+adv. 정기적으로, 일상적으로
+@@
+startle
+v. 깜짝 놀라게 하다
+@@
+advantageous
+adj. 유리한, 이로운
+@@
+reconsider
+v. 다시 생각하다, 재고하다
+@@
+dedicate
+v. 헌신하다, 바치다
+@@
+excluding
+prep. ~을 제외하고
+@@
+hopefully
+adv. 희망적으로, 바라건대
+inclusive
+adj. 포함하는, 포괄적인
+@@
+required
+adj. 필수의, 필요한
+@@
+translation
+n. 번역, 번역본
+@@
+gladly
+adv. 기꺼이, 즐겁게
+@@
+bulletin
+n. 공고, 게시판, 뉴스 단신, 회보
+@@
+coordination
+n. 조정, 조화
+@@
+in regard to
+phr. ~에 관하여
+@@
+reminder
+n. 알림, 생각나게 하는 것
+@@
+designate
+v. 지명하다, 지정하다
+@@
+deserve
+v. ~할 만하다, ~할 가치가 있다
+@@
+eventually
+adv. 결국, 마침내
+@@
+seek out
+phr. 찾아내다, 찾아가다
+@@
+understandable
+adj. 이해할 수 있는
+@@
+boast
+v. 자랑하다, 뽐내다
+@@
+understaffed
+adj. 인력이 부족한
+@@
+overwhelming
+adj. 압도적인, 엄청난
+@@
+occasionally
+adv. 가끔, 때때로
+@@
+doubtful
+adj. 의심스러운, 불확실한
+@@
+determination
+n. 결심, 결단
+@@
+specify
+v. 명시하다, 구체적으로 말하다
+@@
+unexpectedly
+adv. 예상치 못하게, 갑자기
+@@
+kindly
+adv. 친절하게, 상냥하게
+@@
+sensible
+adj. 분별 있는, 현명한
+@@
+emphasis
+n. 강조, 중점
+@@
+consistent
+adj. 일관된, 일정한
+@@
+respectively
+adv. 각각, 각자
+@@
+noticeable
+adj. 눈에 띄는, 현저한
+@@
+likelihood
+n. 가능성, 전망
+@@
+previously
+adv. 이전에, 앞서
+@@
+psychology
+n. 심리학
+@@
+network
+n. 네트워크, 연결망
+@@
+incredible
+adj. 믿을 수 없는, 놀라운
+@@
+apparently
+adv. 외관상으로는, 보기에는
+@@
+be paid for
+phr. ~에 대한 보상을 받다
+@@
+salary review
+phr. 급여 조정
+@@
+newcomer
+n. 신입사원, 신입생
+@@
+employ
+v. 고용하다, 채용하다
+certification
+n. 증명서, 자격증
+make up one's mind
+phr. 결심하다, 마음먹다
+@@
+meet the requirements
+phr. 요건을 충족시키다
+offer a position
+phr. 직책을 제안하다
+@@
+interpersonal skills
+phr. 대인 관계 기술
+@@
+make a call
+phr. 방문하다
+@@
+meet the demand
+phr. 요구사항을 충족 시키다
+@@
+duplication
+n. 복사; 중복
+@@
+prominently
+adv. 눈에 띄게, 두드러지게
+@@
+endeavor
+v. 노력하다, 애쓰다
+n. 노력, 애쓰기
+@@
+brisk
+adj. 활기찬, 활발한
+@@
+convincingly
+adv. 설득력 있게, 확실히
+@@
+progressive
+adj. 진보적인, 혁신적인
+@@
+ambitiously
+adj. 야심차게, 대망을 품고
+@@
+end up
+phr. ~결국에는 되다
+@@
+practicality
+n. 실용성, 현실성
+@@
+mutually
+adv. 서로, 상호간에
+@@
+encouraging
+adj. 격려하는, 용기를 북돋는
+@@
+unrivaled
+adj. 무적의, 비할 데 없는
+@@
+stance
+n. 입장, 태도
+@@
+fundamentally
+adv. 근본적으로, 기본적으로
+@@
+projected
+adj. 예상된, 계획된
+@@
+namely
+adv. 즉, 다시 말해서
+@@
+high-profile
+adj. 주목받는, 눈에 띄는
+@@
+assuredly
+adv. 확실히, 확고하게
+@@
+adequately
+adv. 적절히, 충분히
+@@
+favorably
+adv. 호의적으로, 유리하게
+@@
+unprecedented
+adj. 전례 없는, 새로운
+@@
+discreetly
+adv. 신중하게, 분별 있게
+@@
+follow up on
+phr. ~에 대해 뒤이어 조사하다
+@@
+as of A
+phr. A를 기준으로

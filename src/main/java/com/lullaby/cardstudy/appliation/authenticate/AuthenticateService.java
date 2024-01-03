@@ -40,7 +40,7 @@ public class AuthenticateService {
 
     public Authentication authenticate(String bearerToken) {
         if (!tokenProvider.validateToken(bearerToken)) {
-            throw new IllegalArgumentException();
+            throw new HttpClientErrorException(HttpStatusCode.valueOf(401), "인증 토큰이 유효하지 않거나 만료 되었습니다.");
         }
         Claims claims = tokenProvider.parseToken(bearerToken);
         Long userId = Long.valueOf(claims.getSubject());

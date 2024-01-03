@@ -19,6 +19,10 @@ public class MemberService {
     private final PasswordEncryptService passwordEncryptService;
 
 
+    public MemberResponse getMemberResponse(Long id) {
+        Member member = findMemberEntityOrElseThrow(id);
+        return new MemberResponse(member);
+    }
     public MemberResponse createMember(CreateMemberRequest request) {
         if (memberRepository.existsByAccount(request.account())) {
             throw new IllegalArgumentException("이미 존재하는 아이디입니다.");

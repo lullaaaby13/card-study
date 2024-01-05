@@ -1,19 +1,18 @@
 package com.lullaby.cardstudy.appliation.cardset;
 
 import com.lullaby.cardstudy.appliation.cardset.dto.AddCardSetCommand;
+import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
 import com.lullaby.cardstudy.appliation.cardset.dto.UpdateCardSetCommand;
 import com.lullaby.cardstudy.appliation.member.MemberService;
 import com.lullaby.cardstudy.common.exception.NotFoundException;
 import com.lullaby.cardstudy.domain.CardSet;
 import com.lullaby.cardstudy.domain.CardSetRepository;
-import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
 import com.lullaby.cardstudy.domain.Member;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 @RequiredArgsConstructor
@@ -30,13 +29,17 @@ public class CardSetService {
     }
     public CardSetResponse addCardSet(Long userId, AddCardSetCommand command) {
         Member member = memberService.findMemberEntityOrElseThrow(userId);
-        CardSet cardSet = new CardSet(command.name(), command.description(), member);
+        CardSet cardSet = new CardSet(
+                command.type()
+                , command.name()
+                , command.description()
+                , member
+        );
         return new CardSetResponse(cardSetRepository.save(cardSet));
     }
 
     public void deleteCardSet(Long userId, Long id) {
-        Member member = memberService.findMemberEntityOrElseThrow(userId);
-
+        memberService.findMemberEntityOrElseThrow(userId);
         cardSetRepository.deleteById(id);
     }
 

@@ -1,10 +1,10 @@
 package com.lullaby.cardstudy.web;
 
+import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import com.lullaby.cardstudy.appliation.card.CardService;
 import com.lullaby.cardstudy.appliation.card.dto.AddCardCommand;
 import com.lullaby.cardstudy.appliation.card.dto.CardResponse;
 import com.lullaby.cardstudy.appliation.card.dto.UpdateCardCommand;
-import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;

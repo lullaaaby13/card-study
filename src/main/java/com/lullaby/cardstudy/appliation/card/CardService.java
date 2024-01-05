@@ -1,6 +1,7 @@
 package com.lullaby.cardstudy.appliation.card;
 
 import com.lullaby.cardstudy.appliation.card.dto.AddCardCommand;
+import com.lullaby.cardstudy.appliation.card.dto.CardResponse;
 import com.lullaby.cardstudy.appliation.card.dto.UpdateCardCommand;
 import com.lullaby.cardstudy.appliation.cardset.CardSetService;
 import com.lullaby.cardstudy.appliation.member.MemberService;
@@ -8,7 +9,6 @@ import com.lullaby.cardstudy.common.exception.NotFoundException;
 import com.lullaby.cardstudy.domain.Card;
 import com.lullaby.cardstudy.domain.CardRepository;
 import com.lullaby.cardstudy.domain.CardSet;
-import com.lullaby.cardstudy.appliation.card.dto.CardResponse;
 import com.lullaby.cardstudy.domain.Member;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

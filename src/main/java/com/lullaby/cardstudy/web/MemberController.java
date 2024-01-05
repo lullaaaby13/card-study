@@ -1,8 +1,8 @@
 package com.lullaby.cardstudy.web;
 
 import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
-import com.lullaby.cardstudy.appliation.member.dto.CreateMemberRequest;
 import com.lullaby.cardstudy.appliation.member.MemberService;
+import com.lullaby.cardstudy.appliation.member.dto.CreateMemberRequest;
 import com.lullaby.cardstudy.appliation.member.dto.MemberResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

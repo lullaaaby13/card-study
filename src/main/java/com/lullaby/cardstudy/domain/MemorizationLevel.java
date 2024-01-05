@@ -1,7 +1,6 @@
 package com.lullaby.cardstudy.domain;
 
 import java.time.Duration;
-import java.time.Period;
 
 public enum MemorizationLevel {
     Difficult(0, Duration.ofMinutes(5L)),

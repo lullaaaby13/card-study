@@ -1,10 +1,10 @@
 package com.lullaby.cardstudy.appliation.authenticate;
 
+import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import com.lullaby.cardstudy.appliation.authenticate.dto.SignInCommand;
+import com.lullaby.cardstudy.appliation.authenticate.dto.SignInResponse;
 import com.lullaby.cardstudy.domain.Member;
 import com.lullaby.cardstudy.domain.MemberRepository;
-import com.lullaby.cardstudy.appliation.authenticate.dto.SignInResponse;
-import com.lullaby.cardstudy.appliation.authenticate.dto.AuthenticatedUser;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;

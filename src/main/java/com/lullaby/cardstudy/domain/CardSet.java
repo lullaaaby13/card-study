@@ -4,13 +4,12 @@ import com.lullaby.cardstudy.common.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @EntityListeners(AuditingEntityListener.class)
@@ -26,20 +25,30 @@ public class CardSet extends BaseEntity {
     private LocalDateTime lastReviewedAt;
     private Integer reviewCount;
     private Integer totalCardCount;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Enumerated(EnumType.STRING)
+    private CardSetType type;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private Member owner;
 
     @OneToMany(mappedBy = "cardSet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Card> cards = new ArrayList<>();
 
-    public CardSet(String name, String description, Member owner) {
+    public CardSet(CardSetType type, String name, String description, Member owner) {
+        setType(type);
         setName(name);
         setDescription(description);
         this.lastReviewedAt = LocalDateTime.now();
         this.reviewCount = 0;
         this.totalCardCount = 0;
         this.owner = owner;
+    }
+
+    private void setType(CardSetType type) {
+        if (Objects.isNull(type)) {
+            throw new IllegalArgumentException("카드셋 타입을 입력해 주세요.");
+        }
+        this.type = type;
     }
 
     public void setName(String name) {

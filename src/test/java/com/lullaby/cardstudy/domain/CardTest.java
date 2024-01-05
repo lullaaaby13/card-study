@@ -1,11 +1,10 @@
 package com.lullaby.cardstudy.domain;
 
-import com.lullaby.cardstudy.fixture.MemberFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.lullaby.cardstudy.fixture.CardSetFixture.CARDSET;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CardTest {
 

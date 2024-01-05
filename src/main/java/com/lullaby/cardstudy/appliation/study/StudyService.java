@@ -2,8 +2,8 @@ package com.lullaby.cardstudy.appliation.study;
 
 import com.lullaby.cardstudy.appliation.study.dto.AddStudyCommand;
 import com.lullaby.cardstudy.common.exception.NotFoundException;
-import com.lullaby.cardstudy.domain.Card;
-import com.lullaby.cardstudy.domain.CardRepository;
+import com.lullaby.cardstudy.domain.card.Card;
+import com.lullaby.cardstudy.domain.card.CardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

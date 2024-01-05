@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.domain;
+package com.lullaby.cardstudy.domain.cardset;
 
 public enum CardSetType {
     WORD,

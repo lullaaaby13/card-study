@@ -1,5 +1,7 @@
 package com.lullaby.cardstudy.domain;
 
+import com.lullaby.cardstudy.domain.card.Card;
+import com.lullaby.cardstudy.domain.card.MemorizationLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

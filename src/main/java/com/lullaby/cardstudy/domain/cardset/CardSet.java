@@ -1,6 +1,8 @@
-package com.lullaby.cardstudy.domain;
+package com.lullaby.cardstudy.domain.cardset;
 
 import com.lullaby.cardstudy.common.jpa.BaseEntity;
+import com.lullaby.cardstudy.domain.member.Member;
+import com.lullaby.cardstudy.domain.card.Card;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

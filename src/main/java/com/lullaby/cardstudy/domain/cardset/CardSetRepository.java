@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.domain;
+package com.lullaby.cardstudy.domain.cardset;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

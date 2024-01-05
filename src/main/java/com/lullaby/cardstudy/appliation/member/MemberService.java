@@ -4,8 +4,8 @@ import com.lullaby.cardstudy.appliation.authenticate.PasswordEncryptService;
 import com.lullaby.cardstudy.appliation.member.dto.CreateMemberRequest;
 import com.lullaby.cardstudy.appliation.member.dto.MemberResponse;
 import com.lullaby.cardstudy.common.exception.NotFoundException;
-import com.lullaby.cardstudy.domain.Member;
-import com.lullaby.cardstudy.domain.MemberRepository;
+import com.lullaby.cardstudy.domain.member.Member;
+import com.lullaby.cardstudy.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

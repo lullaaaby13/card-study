@@ -1,7 +1,7 @@
 package com.lullaby.cardstudy.appliation.cardset.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.lullaby.cardstudy.domain.CardSet;
+import com.lullaby.cardstudy.domain.cardset.CardSet;
 
 import java.time.LocalDateTime;
 

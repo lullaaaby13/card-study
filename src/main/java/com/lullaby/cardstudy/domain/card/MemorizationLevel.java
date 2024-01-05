@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.domain;
+package com.lullaby.cardstudy.domain.card;
 
 import java.time.Duration;
 

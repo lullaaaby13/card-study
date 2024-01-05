@@ -1,4 +1,4 @@
-package com.lullaby.cardstudy.domain;
+package com.lullaby.cardstudy.domain.member;
 
 
 import com.lullaby.cardstudy.common.jpa.BaseEntity;

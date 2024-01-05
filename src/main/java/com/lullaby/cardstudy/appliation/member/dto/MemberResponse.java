@@ -1,6 +1,6 @@
 package com.lullaby.cardstudy.appliation.member.dto;
 
-import com.lullaby.cardstudy.domain.Member;
+import com.lullaby.cardstudy.domain.member.Member;
 
 import java.time.LocalDateTime;
 

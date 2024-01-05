@@ -1,8 +1,8 @@
 package com.lullaby.cardstudy.appliation.card.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.lullaby.cardstudy.domain.Card;
-import com.lullaby.cardstudy.domain.MemorizationLevel;
+import com.lullaby.cardstudy.domain.card.Card;
+import com.lullaby.cardstudy.domain.card.MemorizationLevel;
 
 import java.time.LocalDateTime;
 

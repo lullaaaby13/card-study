@@ -1,6 +1,6 @@
 package com.lullaby.cardstudy.fixture;
 
-import com.lullaby.cardstudy.domain.Member;
+import com.lullaby.cardstudy.domain.member.Member;
 
 public class MemberFixture {
 

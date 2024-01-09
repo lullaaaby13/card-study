@@ -17,12 +17,12 @@ public class MemberController {
 
     @PostMapping
     public MemberResponse createMember(@RequestBody CreateMemberRequest request) {
-        return memberService.createMember(request);
+        return memberService.create(request);
     }
 
     @GetMapping("current")
     public MemberResponse currentMember(@AuthenticationPrincipal AuthenticatedUser authenticatedUser) {
-        return memberService.getMemberResponse(authenticatedUser.getUserId());
+        return memberService.one(authenticatedUser.getUserId());
     }
 
 }

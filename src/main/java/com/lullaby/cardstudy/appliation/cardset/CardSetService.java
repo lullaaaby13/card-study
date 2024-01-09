@@ -4,13 +4,14 @@ import com.lullaby.cardstudy.appliation.cardset.dto.AddCardSetCommand;
 import com.lullaby.cardstudy.appliation.cardset.dto.CardSetResponse;
 import com.lullaby.cardstudy.appliation.cardset.dto.UpdateCardSetCommand;
 import com.lullaby.cardstudy.appliation.member.MemberService;
-import com.lullaby.cardstudy.common.exception.NotFoundException;
 import com.lullaby.cardstudy.domain.cardset.CardSet;
 import com.lullaby.cardstudy.domain.cardset.CardSetRepository;
 import com.lullaby.cardstudy.domain.member.Member;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CardSetService {
                 .toList();
     }
     public CardSetResponse addCardSet(Long userId, AddCardSetCommand command) {
-        Member member = memberService.findMemberEntityOrElseThrow(userId);
+        Member member = memberService.findEntityOrElseThrow(userId);
         CardSet cardSet = new CardSet(
                 command.type()
                 , command.name()
@@ -39,19 +40,24 @@ public class CardSetService {
     }
 
     public void deleteCardSet(Long userId, Long id) {
-        memberService.findMemberEntityOrElseThrow(userId);
-        cardSetRepository.deleteById(id);
+        CardSet cardSet = findCardSetEntityOrElseThrow(id, userId);
+        cardSetRepository.delete(cardSet);
     }
 
     public CardSetResponse updateCardSet(Long userId, Long id, UpdateCardSetCommand command) {
-        CardSet cardSet = cardSetRepository.findById(id).orElseThrow();
-        cardSet.setName(command.name());
-        cardSet.setDescription(command.description());
+        CardSet cardSet = findCardSetEntityOrElseThrow(id, userId);
+        if (command.name() != null) {
+            cardSet.setName(command.name());
+        }
+        if (command.description() != null) {
+            cardSet.setDescription(command.description());
+        }
         return new CardSetResponse(cardSetRepository.save(cardSet));
     }
 
     public CardSet findCardSetEntityOrElseThrow(Long id, Long ownerId) {
-        return cardSetRepository.findByIdAndOwnerId(id, ownerId).orElseThrow(() -> new NotFoundException("카드 셋을 찾을 수 없습니다."));
+        return cardSetRepository.findByIdAndOwnerId(id, ownerId)
+                .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "카드 셋을 찾을 수 없습니다."));
     }
 
 }

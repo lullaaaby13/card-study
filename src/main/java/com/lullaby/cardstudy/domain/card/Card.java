@@ -10,28 +10,25 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Getter
-@EntityListeners(AuditingEntityListener.class)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 @NoArgsConstructor
 @Entity
-public class Card extends BaseEntity {
+public abstract class Card extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_id")
-    private Long id;
-    private String front;
-    private String back;
-    private MemorizationLevel memorizationLevel;
-    private LocalDateTime nextReviewAt;
+    protected Long id;
+    protected MemorizationLevel memorizationLevel;
+    protected LocalDateTime nextReviewAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "card_set_id")
-    private CardSet cardSet;
+    protected CardSet cardSet;
 
-    public Card(CardSet cardSet, String front, String back) {
+    protected Card(CardSet cardSet) {
         setCardSet(cardSet);
-        setFront(front);
-        setBack(back);
         this.memorizationLevel = MemorizationLevel.Difficult;
         this.nextReviewAt = LocalDateTime.now();
     }
@@ -41,20 +38,6 @@ public class Card extends BaseEntity {
             throw new IllegalArgumentException("카드 셋을 입력해 주세요.");
         }
         this.cardSet = cardSet;
-    }
-
-    public void setFront(String front) {
-        if (front == null || front.isBlank()) {
-            throw new IllegalArgumentException("앞면을 입력해 주세요.");
-        }
-        this.front = front;
-    }
-
-    public void setBack(String back) {
-        if (back == null || back.isBlank()) {
-            throw new IllegalArgumentException("뒷면을 입력해 주세요.");
-        }
-        this.back = back;
     }
 
     public void increaseMemorizationLevel() {

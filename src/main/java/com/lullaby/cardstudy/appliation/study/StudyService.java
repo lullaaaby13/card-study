@@ -3,7 +3,7 @@ package com.lullaby.cardstudy.appliation.study;
 import com.lullaby.cardstudy.appliation.study.dto.AddStudyCommand;
 import com.lullaby.cardstudy.common.exception.NotFoundException;
 import com.lullaby.cardstudy.domain.card.Card;
-import com.lullaby.cardstudy.domain.card.CardRepository;
+import com.lullaby.cardstudy.domain.card.word.WordCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,11 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class StudyService {
 
-    private final CardRepository cardRepository;
+    private final WordCardRepository wordCardRepository;
 
 
     public void addStudy(AddStudyCommand command) {
-        Card card = cardRepository.findById(command.cardId())
+        Card card = wordCardRepository.findById(command.cardId())
                 .orElseThrow(() -> new NotFoundException("카드를 찾을 수 없습니다."));
 
         if (command.studyResult() == AddStudyCommand.StudyResult.CORRECT) {

@@ -1,15 +1,15 @@
-package com.lullaby.cardstudy.appliation.card.dto;
+package com.lullaby.cardstudy.appliation.card.word.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.lullaby.cardstudy.domain.card.Card;
 import com.lullaby.cardstudy.domain.card.MemorizationLevel;
+import com.lullaby.cardstudy.domain.card.word.WordCard;
 
 import java.time.LocalDateTime;
 
-public record CardResponse(
+public record WordCardResponse(
         Long id,
-        String front,
-        String back,
+        String question,
+        String answer,
         MemorizationLevel memorizationLevel,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime nextReviewDate,
@@ -20,11 +20,11 @@ public record CardResponse(
         LocalDateTime updatedAt
 ) {
 
-    public CardResponse(Card card) {
+    public WordCardResponse(WordCard card) {
         this(
                 card.getId(),
-                card.getFront(),
-                card.getBack(),
+                card.getQuestion(),
+                card.getAnswer(),
                 card.getMemorizationLevel(),
                 card.getNextReviewAt(),
                 // new CardSetResponse(card.getCardSet()),

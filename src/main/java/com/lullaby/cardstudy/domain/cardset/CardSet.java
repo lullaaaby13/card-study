@@ -69,11 +69,11 @@ public class CardSet extends BaseEntity {
         this.reviewCount++;
     }
 
-    public void addCard() {
+    public void increaseCardCount() {
         this.totalCardCount++;
     }
 
-    public void deleteCard() {
+    public void decreaseCardCount() {
         this.totalCardCount--;
     }
 

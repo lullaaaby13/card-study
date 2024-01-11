@@ -2,6 +2,7 @@ package com.lullaby.cardstudy.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
@@ -9,6 +10,13 @@ import org.springframework.web.client.HttpClientErrorException;
 @Slf4j
 @RestControllerAdvice
 public class CommonExceptionHandler {
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<HttpErrorResponse> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+        log.error(e.getMessage(), e);
+        return ResponseEntity.status(400)
+                .body(new HttpErrorResponse(400, e.getMessage()));
+    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<HttpErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {

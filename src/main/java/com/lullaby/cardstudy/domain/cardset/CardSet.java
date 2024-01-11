@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Getter
 @EntityListeners(AuditingEntityListener.class)
@@ -88,4 +89,10 @@ public class CardSet extends BaseEntity {
         return this.owner.equals(member);
     }
 
+    public Optional<Card> firstCard() {
+        if (this.cards.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(this.cards.get(0));
+    }
 }

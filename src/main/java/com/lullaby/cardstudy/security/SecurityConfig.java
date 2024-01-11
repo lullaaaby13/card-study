@@ -28,7 +28,10 @@ public class SecurityConfig {
                     authorizeRequests
                             .requestMatchers(new AntPathRequestMatcher("/api/auth/**")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/member", "POST")).permitAll()
-                            .anyRequest().authenticated();
+                            .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated()
+                            .anyRequest().permitAll();
+//                            .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated()
+//                            .anyRequest().permitAll();
                 })
                 .addFilterBefore(new JwtFilter(authenticateService), UsernamePasswordAuthenticationFilter.class)
                 .build();

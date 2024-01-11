@@ -15,7 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Transactional
@@ -97,9 +100,34 @@ public class ChoiceCardService {
 
         for (String problemTemplate : textFileContent.split("@@")) {
 
-            String[] problem = problemTemplate.split("Q.|1.|2.|3.|4.|5.|A.");
+            List<String> fragments = Stream.of(problemTemplate.split("\\$\\$"))
+                    .filter(StringUtils::isNotBlank)
+                    .toList();
 
-            ChoiceCardResponse response = create(userId, null);
+            if (fragments.isEmpty()) {
+                continue;
+            }
+
+            CreateChoiceCardCommand createChoiceCardCommand = new CreateChoiceCardCommand(
+                    cardSetId,
+                    fragments.stream()
+                            .filter(fragment -> fragment.startsWith("Q."))
+                            .findFirst()
+                            .orElse(null),
+                    fragments.stream()
+                            .filter(fragment -> fragment.startsWith("A."))
+                            .findFirst()
+                            .orElse(null),
+                    fragments.stream()
+                            .filter(fragment -> fragment.startsWith("1.") || fragment.startsWith("2.") || fragment.startsWith("3.") || fragment.startsWith("4.") || fragment.startsWith("5."))
+                            .map(it -> new CreateChoiceCardCommand.Choice(
+                                    Integer.parseInt(it.substring(0, 1))
+                                    , it.substring(2).replace("[X]", "").replace("[O]", "").trim()
+                                    , it.contains("[O]")
+                            )).toList()
+            );
+
+            ChoiceCardResponse response = create(userId, createChoiceCardCommand);
             responses.add(response);
         }
 

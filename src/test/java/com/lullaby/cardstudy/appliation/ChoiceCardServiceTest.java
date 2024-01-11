@@ -168,19 +168,19 @@ class ChoiceCardServiceTest extends IntegrationTest {
     @Test
     void createByFile() {
         String content = """
-                $Q. Customer reviews indicate that many modern mobile devices are often unnecessarily ____.
-  $1. complication
-  $2. complicates
-  $3. complicate
-  $4. complicated
-  $A. Answer of the question.
+                $$Q. Customer reviews indicate that many modern mobile devices are often unnecessarily ____.
+  $$1. complication [O]
+  $$2. complicates [X]
+  $$3. complicate [X]
+  $$4. complicated [X]
+  $$A. Answer of the question.
   @@
-  Q. Customer reviews indicate that many modern mobile devices are often unnecessarily ____.
-  1. complication
-  2. complicates
-  3. complicate
-  4. complicated
-  A. Answer of the question. 
+  $$Q. Customer reviews indicate that many modern mobile devices are often unnecessarily ____.
+  $$1. complication [O]
+  $$2. complicates [X]
+  $$3. complicate [X]
+  $$4. complicated [X]
+  $$A. Answer of the question. 
   @@
                 """;
         List<ChoiceCardResponse> responses = cardService.createByFile(member.getId(), cardSet.id(), content);

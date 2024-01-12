@@ -8,6 +8,4 @@ import java.util.List;
 public interface WordCardRepository extends JpaRepository<WordCard, Long> {
     List<WordCard> findByCardSetOrderByIdDesc(CardSet cardSet);
 
-
-
 }

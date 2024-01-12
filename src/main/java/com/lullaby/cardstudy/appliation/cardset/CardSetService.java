@@ -60,4 +60,9 @@ public class CardSetService {
                 .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "카드 셋을 찾을 수 없습니다."));
     }
 
+    public CardSet findCardWithinCardSet(Long cardSetId, Long cardId, Long ownerId) {
+        return cardSetRepository.findCard(cardSetId, cardId, ownerId)
+                .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "카드 셋을 찾을 수 없습니다."));
+    }
+
 }

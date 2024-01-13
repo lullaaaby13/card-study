@@ -26,9 +26,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+                .addFilterBefore(new JwtFilter(authenticateService), UsernamePasswordAuthenticationFilter.class)
+                .cors(it -> it.configurationSource(corsConfigurationSource()))
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(it -> it.configurationSource(corsConfigurationSource()))
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
                             .requestMatchers(HttpMethod.OPTIONS).permitAll()
@@ -36,10 +37,7 @@ public class SecurityConfig {
                             .requestMatchers(new AntPathRequestMatcher("/api/member", "POST")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated()
                             .anyRequest().permitAll();
-//                            .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated()
-//                            .anyRequest().permitAll();
                 })
-                .addFilterBefore(new JwtFilter(authenticateService), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

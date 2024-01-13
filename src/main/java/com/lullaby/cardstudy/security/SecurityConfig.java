@@ -45,8 +45,9 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOriginPattern("*"); // 허용할 도메인 (모든 도메인을 허용하려면 "*")
-        configuration.addAllowedMethod("*"); // 허용할 HTTP 메서드
+        configuration.addAllowedMethod("GET, POST, PUT, PATCH, DELETE, OPTIONS"); // 허용할 HTTP 메서드
         configuration.addAllowedHeader("*"); // 허용할 헤더
+
         configuration.setAllowCredentials(true); // 이 부분을 추가
         configuration.setMaxAge(3600L); // 캐시 시간 (3600 == 1시간)
 

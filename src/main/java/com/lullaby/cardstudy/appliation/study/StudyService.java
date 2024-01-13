@@ -24,8 +24,8 @@ public class StudyService {
 
         if (command.studyResult() == AddStudyCommand.StudyResult.CORRECT) {
             card.increaseMemorizationLevel();
-        } else if (command.studyResult() == AddStudyCommand.StudyResult.CORRECT) {
-            card.decreaseMemorizationLevel();
+        } else if (command.studyResult() == AddStudyCommand.StudyResult.WRONG) {
+            card.clearMemorizationLevel();
         }
     }
 

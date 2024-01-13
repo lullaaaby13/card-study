@@ -18,6 +18,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @Transactional
@@ -40,6 +41,10 @@ public class WordCardService {
     public WordCardResponse addCard(Long userId, CreateWordCardCommand command) {
         CardSet cardSet = cardSetService.findCardSetEntityOrElseThrow(command.cardSetId(), userId);
         validateCardOwner(userId, cardSet);
+
+        if (wordCardRepository.existsByCardSetAndQuestion(cardSet, command.question())) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "이미 존재하는 질문입니다.");
+        }
 
         WordCard card = new WordCard(cardSet, command.question(), command.answer());
         wordCardRepository.save(card);
@@ -71,16 +76,21 @@ public class WordCardService {
     public List<WordCardResponse> addCardByFile(Long userId, Long cardSetId, String textFileContent) {
         List<WordCardResponse> responses = new ArrayList<>();
 
-        for (String text : textFileContent.split("@@")) {
-
-            if (text.startsWith("\n")) {
-                text = text.substring(1);
-            }
-            String question = StringUtils.substringBefore(text, "\n").trim();
-            String answer = StringUtils.substringAfter(text, "\n").trim();
-            WordCardResponse response = addCard(userId, new CreateWordCardCommand(cardSetId, question, answer));
-            responses.add(response);
-        }
+        Stream.of(textFileContent.split("@@"))
+                .map(StringUtils::trimToEmpty)
+                .filter(StringUtils::isNotBlank)
+                .forEach(text -> {
+                    String question = StringUtils.substringBefore(text, "\n").trim();
+                    String answer = StringUtils.substringAfter(text, "\n").trim();
+                    try {
+                        WordCardResponse response = addCard(userId, new CreateWordCardCommand(cardSetId, question, answer));
+                        responses.add(response);
+                    } catch (HttpClientErrorException exception) {
+                        if (exception.getStatusCode() != HttpStatus.BAD_REQUEST) {
+                            throw exception;
+                        }
+                    }
+                });
 
         return responses;
     }

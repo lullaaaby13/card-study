@@ -50,7 +50,7 @@ public class WordCardController {
     @PostMapping("/file")
     public List<WordCardResponse> addCardByFile(
             @AuthenticationPrincipal AuthenticatedUser authenticatedUser,
-            @RequestParam Long cardSetId,
+            @RequestParam(name = "cardSetId") Long cardSetId,
             @RequestPart("file") MultipartFile multipartFile
     ) throws IOException {
         return cardService.addCardByFile(authenticatedUser.getUserId(), cardSetId, new String(multipartFile.getBytes()));

@@ -14,6 +14,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.List;
+
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Configuration
@@ -23,6 +25,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+                .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(it -> it.configurationSource(corsConfigurationSource()))
                 .authorizeRequests(authorizeRequests -> {
@@ -44,10 +47,10 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOriginPattern("*"); // 허용할 도메인 (모든 도메인을 허용하려면 "*")
-        configuration.addAllowedMethod("GET, POST, PUT, PATCH, DELETE, OPTIONS"); // 허용할 HTTP 메서드
-        configuration.addAllowedHeader("*"); // 허용할 헤더
-
+        configuration.setAllowedOriginPatterns(List.of("*")); // 허용할 도메인 (모든 도메인을 허용하려면 "*")
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 허용할 Header
+        configuration.setAllowedHeaders(List.of("*")); // 허용할 헤더
+        configuration.setExposedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // 이 부분을 추가
         configuration.setMaxAge(3600L); // 캐시 시간 (3600 == 1시간)
 

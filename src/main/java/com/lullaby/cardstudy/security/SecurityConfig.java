@@ -4,6 +4,7 @@ import com.lullaby.cardstudy.appliation.authenticate.AuthenticateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -30,6 +31,7 @@ public class SecurityConfig {
                 .cors(it -> it.configurationSource(corsConfigurationSource()))
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
+                            .requestMatchers(HttpMethod.OPTIONS).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/auth/**")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/member", "POST")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated()

@@ -126,6 +126,7 @@ class WordCardServiceTest extends IntegrationTest {
                 @@
                 Banana
                 바나나
+                뻐내너
                 @@
                 Citron
                 유자

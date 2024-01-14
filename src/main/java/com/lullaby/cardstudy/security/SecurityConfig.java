@@ -48,7 +48,7 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(List.of("*")); // 허용할 도메인 (모든 도메인을 허용하려면 "*")
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 허용할 Header
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); // 허용할 Header
         configuration.setAllowedHeaders(List.of("*")); // 허용할 헤더
         configuration.setExposedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // 이 부분을 추가

@@ -23,7 +23,7 @@ repositories {
 
 bootJar {
     enabled = true
-    archiveFileName = 'card-study-api.jar'
+    archiveFileName = 'app.jar'
 }
 
 dependencies {

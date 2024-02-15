@@ -12,7 +12,7 @@ permissions:
 jobs:
   build:
     name: Build & Deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: prod
     steps:
       - uses: actions/checkout@v3
@@ -37,26 +37,27 @@ jobs:
       - name: Build with Gradle
         run: |
           ./gradlew bootJar --parallel
-      - name: Copy jar file to remote
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          port: 22
-          source: "./build/libs/card-study-api.jar"
-          target: ${{ secrets.DEPLOY_PATH }}
-          strip_components: 1
-      - name: Run jar file
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          port: 22
-          script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-            DATABASE_URL=${{ secrets.DATABASE_URL }} \
-            DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
-            DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
-            nohup java -jar -Dspring.profiles.active=prod -Dserver.port=${{ secrets.APP_PORT }} ./build/libs/card-study-api.jar > ./card-study-api.log 2>&1 &
+
+#      - name: Copy jar file to remote
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.SERVER_IP }}
+#          username: ${{ secrets.SERVER_USERNAME }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+#          port: 22
+#          source: "./build/libs/card-study-api.jar"
+#          target: ${{ secrets.DEPLOY_PATH }}
+#          strip_components: 1
+#      - name: Run jar file
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SERVER_IP }}
+#          username: ${{ secrets.SERVER_USERNAME }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+#          port: 22
+#          script: |
+#            cd ${{ secrets.DEPLOY_PATH }}
+#            DATABASE_URL=${{ secrets.DATABASE_URL }} \
+#            DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+#            DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+#            nohup java -jar -Dspring.profiles.active=prod -Dserver.port=${{ secrets.APP_PORT }} ./build/libs/card-study-api.jar > ./card-study-api.log 2>&1 &

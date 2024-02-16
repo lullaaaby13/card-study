@@ -74,17 +74,29 @@ jobs:
             {{version}}
             {{major}}.{{minor}}
       - name: Deploy to Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          script: |
-            docker pull ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
-            docker run -d \
-            -e spring.profiles.active=prod \
-            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
-            -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
-            -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
-            -p ${{ secrets.SERVER_PORT }}:8080 \
-            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
+        shell: bash
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
+          docker run -d \
+          -e spring.profiles.active=prod \
+          -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+          -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+          -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+          -p ${{ secrets.SERVER_PORT }}:8080 \
+          ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
+
+#      - name: Deploy to Server
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SERVER_HOST }}
+#          username: ${{ secrets.SERVER_USERNAME }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+#          script: |
+#            docker pull ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
+#            docker run -d \
+#            -e spring.profiles.active=prod \
+#            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+#            -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+#            -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+#            -p ${{ secrets.SERVER_PORT }}:8080 \
+#            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ steps.docker_meta.outputs.tags }}
